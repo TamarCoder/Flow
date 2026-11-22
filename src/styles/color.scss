@@ -1,0 +1,80 @@
+:root {
+  --bg: #f6eee3; //მთავარი  ბექგრაუდნი ლაით მოდუზე
+  --bg-gradient:
+    radial-gradient(
+      circle at 15% 35%,
+      rgba(240, 140, 90, 0.75) 0%,
+      transparent 38%
+    ),
+    radial-gradient(
+      circle at 70% 15%,
+      rgba(250, 190, 110, 0.6) 0%,
+      transparent 38%
+    ),
+    radial-gradient(
+      circle at 85% 85%,
+      rgba(200, 120, 120, 0.35) 0%,
+      transparent 32%
+    );
+  --surface: rgba(255, 250, 242, 0.72); //მინის ზედაპირი
+  --primary-text: #2b1216; //მთავარი ტექსტი -ლაით მოუდზე
+  --secondary-text: #5e4541; //მეორადი ტექსტი -ლაით მოუდზე
+  --line: rgba(122, 31, 43, 0.16); //მთავარი ხაზები -ლაით მოუდზე
+  --accent: #7a1f2b; //მთავარი ღილაკი, ბმული -ლაით მოუდზე
+  --on-accent: #fff6ea; //მთავარი ღილაკის ტექსტი -ლაით მოუდზე
+  --burgundy: #7a1f2b; //მთავარი ბურგუნდია -ლაით მოუდზე, შესრულებული, წაშლა
+  --orange: #e2601c; //პროცესში (ფორმა)
+  --doing-text: #a8420c; //პროცესში ტექსტი (ფორმა)
+  --panel: rgba(122, 31, 43, 0.78); //მთავარი პანელი -ლაით მოუდზე, შესრულებული,
+  --panel-hot: #ffb37a; //აქცენტი პანელზე
+  --blob1: rgba(226, 96, 28, 0.75); //ფონის ლაქა 1
+  --blob2: rgba(122, 31, 43, 0.45); //ფონის ლაქა 2
+  --blob3: #f2b36b; //ფონის ლაქა 3
+  --row: rgba(255, 250, 242, 0.92); //რიგი პანელის შიგნით
+  --icon: #7a1f2b;
+
+  --task-panel: #8e4a50; // მშობელი ბარათი (მოვარდისფრო მაროონი)
+  --task-item: #f5e6e0; // თითო ბოქსი (კრემისფერი)
+  --task-item-text: #2a1a1a;
+  --task-dot-done: #7a1f2b; // შევსებული წრე
+  --task-dot-progress: #e0602f; // ნახევრად შევსებული
+  --task-dot-todo: #7a1f2b; // ცარიელი წრის ბორდერი
+}
+
+[data-theme="dark"] {
+  --bg: #1a0c0f; //მთავარი  ბექგრაუდნი dark მოდუზე
+  --bg-gradient:
+    radial-gradient(
+      circle at 12% 30%,
+      rgba(200, 70, 20, 0.7) 0%,
+      transparent 42%
+    ),
+    radial-gradient(
+      circle at 85% 90%,
+      rgba(150, 30, 40, 0.6) 0%,
+      transparent 42%
+    );
+  --surface: rgba(255, 235, 225, 0.08); //მინის ზედაპირი
+  --primary-text: #f6e9dc; //მთავარი ტექსტი -dark მოუდზე
+  --secondary-text: #b79c95; //მეორადი ტექსტი -dark მოუდზე
+  --line: rgba(255, 220, 205, 0.14); //მთავარი ხაზები -dark მოუდზე
+  --accent: #ff8a3d; //მთავარი ღილაკი, ბმული -dark მოუდზე
+  --on-accent: #1a0c0f; //მთავარი ღილაკის ტექსტი -dark მოუდზე
+  --burgundy: #d4566a; //მთავარი ბურგუნდია -dark მოუდზე, შესრულებული, წაშლა
+  --orange: #ff8a3d; //პროცესში (ფორმა)
+  --doing-text: #ff9a57; //პროცესში ტექსტი (ფორმა)
+  --panel: rgba(90, 20, 32, 0.55); //მთავარი პანელი -dark მოუდზე, შესრულებული,
+  --panel-hot: #ff8a3d; //აქცენტი პანელზე
+  --blob1: #c2410c; //ფონის ლაქა 1
+  --blob2: #8e2436; //ფონის ლაქა 2
+  --blob3: #5a1420; //ფონის ლაქა 3
+  --row: rgba(255, 235, 225, 0.1); //რიგი პანელის შიგნით
+  --icon: #f6eee3;
+
+  --task-panel: rgba(255, 255, 255, 0.06);  
+  --task-item: rgba(255, 255, 255, 0.1);
+  --task-item-text: #f6eee3;
+  --task-dot-done: #d9475a;
+  --task-dot-progress: #ff7a2f;
+  --task-dot-todo: #b8a29a;
+}

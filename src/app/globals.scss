@@ -1,0 +1,52 @@
+@use '../styles/color';
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  height: 100%;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: 'Noto Sans Georgian', sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+  background-color: var(--bg);
+  color: var(--text);
+  transition: background-color 0.2s, color 0.2s;
+}
+
+h1 {
+  font-family: 'Noto Serif Georgian', serif;
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+h2 {
+  font-family: 'Noto Serif Georgian', serif;
+  font-size: 34px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+h3 {
+  font-family: 'Noto Serif Georgian', serif;
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}

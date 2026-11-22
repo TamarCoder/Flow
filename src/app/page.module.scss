@@ -1,0 +1,179 @@
+.landingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--bg);
+  background-image: var(--bg-gradient);
+  background-repeat: no-repeat;
+  color: var(--text);
+}
+
+.logoSectio {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 60px;
+  padding: 15px 25px;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.outlineButton {
+  padding: 20px 30px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background-color: transparent;
+  color: var(--primary-text);
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    border: 1px solid var(--accent);
+  }
+}
+
+.fillButton {
+  padding: 20px 20px;
+  border: none;
+  border-radius: 20px;
+  background-color: var(--accent);
+  color: var(--bg);
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: var(--on-accent);
+  }
+}
+
+.contentSection {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  padding-top: 120px;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.contentContainer {
+  width: 50%;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+
+.contentTitle {
+  font-size: 40px;
+  font-weight: 600;
+  color: var(--primary-text);
+}
+
+.contentDescription {
+  max-width: 520px;
+  font-size: 20px;
+  color: var(--secondary-text);
+}
+
+.contentButtons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 25px;
+}
+
+.contentOutlineButtons {
+  padding: 20px 20px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background-color: transparent;
+  color: var(--primary-text);
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    border: 1px solid var(--accent);
+  }
+}
+
+.contentFillButtons {
+  padding: 20px 25px;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--accent);
+  color: var(--bg);
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: var(--on-accent);
+  }
+}
+
+.contentToasts {
+  width: 50%;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.boxs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  gap: 12px;
+  width: 100%;
+  max-width: 800px;
+  min-height: 300px;
+  padding: 36px;
+  background: var(--task-panel);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+}
+
+.taskItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  border-radius: 12px;
+  background: var(--task-item);
+  color: var(--task-item-text);
+}
+.taskItem:first-child{
+  text-decoration: line-through;
+}
+
+.dotDone,
+.dotProgress,
+.dotTodo {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.dotDone {
+  background: var(--task-dot-done);
+}
+
+.dotProgress {
+  border: 2px solid var(--task-dot-progress);
+  background: linear-gradient(90deg, var(--task-dot-progress) 50%, transparent 50%);
+}
+
+.dotTodo {
+  border: 2px solid var(--task-dot-todo);
+}

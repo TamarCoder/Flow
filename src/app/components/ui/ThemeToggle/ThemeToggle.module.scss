@@ -1,0 +1,24 @@
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid var(--text-muted);
+  background: transparent;
+  color: var(--icon);
+  border: 1px solid var(--icon);
+  cursor: pointer;
+  transition:
+    transform 0.15s,
+    background-color 0.2s;
+
+  &:hover {
+    background: var(--card);
+  }
+
+  &:active {
+    transform: scale(0.92);
+  }
+}
