@@ -2,26 +2,16 @@
 
 import { useEffect, useState } from 'react';
 import { MoonStar, Sun } from 'lucide-react';
+import { applyTheme, readSavedTheme, saveTheme, type Theme } from '@/lib/theme';
 import styles from './ThemeToggle.module.scss';
 
-type Theme = 'light' | 'dark';
-
-function applyTheme(theme: Theme) {
-  const html = document.documentElement;
-  html.dataset.theme = theme;
-  html.classList.remove('light', 'dark');
-  html.classList.add(theme);
-}
 
 export default function ThemeToggle() {
   const [theme, setTheme] = useState<Theme>('light');
 
   // გვერდის ჩატვირთვისას წაიკითხე შენახული თემა
   useEffect(() => {
-    const saved = localStorage.getItem('theme') as Theme | null;
-    const initial: Theme =
-      saved ??
-      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    const initial = readSavedTheme();
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setTheme(initial);
     applyTheme(initial);
@@ -30,8 +20,7 @@ export default function ThemeToggle() {
   const toggle = () => {
     const next: Theme = theme === 'dark' ? 'light' : 'dark';
     setTheme(next);
-    applyTheme(next);
-    localStorage.setItem('theme', next);
+    saveTheme(next);
   };
 
   return (

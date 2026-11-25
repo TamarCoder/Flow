@@ -1,0 +1,63 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  width: 100%;
+  max-width: 560px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 64px 20px 40px;
+  color: var(--primary-text);
+}
+
+.backLink {
+  width: fit-content;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--accent);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.avatar {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-family: var(--font-serif), serif;
+  font-size: 30px;
+}
+
+.name {
+  font-size: 30px;
+}
+
+.email {
+  font-size: 14px;
+  color: var(--secondary-text);
+}
+
+.logout {
+  height: 52px;
+  border: 1px solid var(--burgundy);
+  border-radius: 14px;
+  background: transparent;
+  color: var(--done-text);
+  font: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}

@@ -10,6 +10,10 @@ type Route = [method: string, pattern: RegExp, answer: (params: string[], body: 
 // Answers the same paths the backend will serve, so hooks do not know which one they talk to.
 const routes: Route[] = [
   ["GET", /^\/me$/, () => mockUser],
+  ["PATCH", /^\/me$/, (_, body) => Object.assign(mockUser, body)],
+  // The mock accepts any current password.
+  ["POST", /^\/me\/password$/, () => ({})],
+  ["POST", /^\/auth\/logout$/, () => ({})],
   ["GET", /^\/projects$/, (): ProjectSummary[] =>
     mockProjects.map((project) => {
       const tasks = mockTasks.filter((task) => task.projectId === project.id);
