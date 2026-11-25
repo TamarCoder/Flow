@@ -88,3 +88,7 @@ When the backend works, delete `src/mocks/` and the mock branch in
 | `npm run build` | Production build |
 | `npm run start` | Serve the production build |
 | `npm run lint` | ESLint |
+
+## License
+
+[MIT](LICENSE)
