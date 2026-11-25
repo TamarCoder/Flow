@@ -17,30 +17,30 @@ body {
 }
 
 body {
-  font-family: 'Noto Sans Georgian', sans-serif;
+  font-family: var(--font-sans), sans-serif;
   font-size: 18px;
   line-height: 1.6;
   background-color: var(--bg);
-  color: var(--text);
+  color: var(--primary-text);
   transition: background-color 0.2s, color 0.2s;
 }
 
 h1 {
-  font-family: 'Noto Serif Georgian', serif;
+  font-family: var(--font-serif), serif;
   font-size: 40px;
   font-weight: 600;
   line-height: 1.2;
 }
 
 h2 {
-  font-family: 'Noto Serif Georgian', serif;
+  font-family: var(--font-serif), serif;
   font-size: 34px;
   font-weight: 600;
   line-height: 1.2;
 }
 
 h3 {
-  font-family: 'Noto Serif Georgian', serif;
+  font-family: var(--font-serif), serif;
   font-size: 26px;
   font-weight: 600;
   line-height: 1.3;
@@ -49,4 +49,9 @@ h3 {
 a {
   color: inherit;
   text-decoration: none;
+}
+// Radix sets its own font inside <Theme>; point it at the Georgian fonts.
+.radix-themes {
+  --default-font-family: var(--font-sans), sans-serif;
+  --heading-font-family: var(--font-serif), serif;
 }

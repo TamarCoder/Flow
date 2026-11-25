@@ -1,17 +1,19 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Noto_Sans_Georgian, Noto_Serif_Georgian } from "next/font/google";
 import "@radix-ui/themes/styles.css";
 import "./globals.scss";
 import { Theme } from "@radix-ui/themes";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const notoSans = Noto_Sans_Georgian({
+  variable: "--font-sans",
+  subsets: ["georgian", "latin"],
+  weight: ["400", "500", "600"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const notoSerif = Noto_Serif_Georgian({
+  variable: "--font-serif",
+  subsets: ["georgian", "latin"],
+  weight: ["500", "600"],
 });
 
 export const metadata: Metadata = {
@@ -37,7 +39,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="ka"
       suppressHydrationWarning
-      className={`${geistSans.variable} ${geistMono.variable}`}
+      className={`${notoSans.variable} ${notoSerif.variable}`}
     >
       <body>
         <Theme appearance="inherit">{children}</Theme>

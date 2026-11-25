@@ -48,9 +48,11 @@ export default function MainApp() {
             ჩაწერე ტასქები, მონიშნე რა არის პროცესში და რა შესრულდა.
           </p>
           <div className={styles.contentButtons}>
-            <Button className={styles.contentFillButtons}>დაწყება</Button>
-            <Button className={styles.contentOutlineButtons}>
-              უკვე მაქვს ანგარიში
+            <Button asChild className={styles.contentFillButtons}>
+              <Link href="/register">დაწყება</Link>
+            </Button>
+            <Button asChild className={styles.contentOutlineButtons}>
+              <Link href="/login">უკვე მაქვს ანგარიში</Link>
             </Button>
           </div>
         </div>
