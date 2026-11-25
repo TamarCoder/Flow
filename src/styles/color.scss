@@ -48,6 +48,7 @@
   --glass-bg: rgba(255, 255, 255, 0.55);
   --glass-border: rgba(255, 255, 255, 0.75);
   --glass-shadow: 0 8px 32px rgba(122, 31, 43, 0.12);
+  --glass-line: rgba(255, 255, 255, 0.7); //მინის ზედა ხაზი
   --progress-track: rgba(122, 31, 43, 0.15);
   --progress-fill: #7a1f2b;
 }
@@ -102,6 +103,7 @@
   --glass-bg: rgba(255, 255, 255, 0.06);
   --glass-border: rgba(255, 255, 255, 0.12);
   --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+  --glass-line: rgba(255, 255, 255, 0.14); //მინის ზედა ხაზი
   --progress-track: rgba(255, 255, 255, 0.12);
   --progress-fill: #ff7a2f;
 }

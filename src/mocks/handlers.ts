@@ -1,4 +1,5 @@
 import type { LoginValues, RegisterValues } from "@/lib/auth";
+import type { ProjectValues } from "@/lib/project";
 import type { ProjectSummary } from "@/types/models";
 import { mockProjects } from "./projects";
 import { mockTasks } from "./tasks";
@@ -12,6 +13,11 @@ const routes: Record<string, (body: unknown) => unknown> = {
       const tasks = mockTasks.filter((task) => task.projectId === project.id);
       return { ...project, taskCount: tasks.length, doneCount: tasks.filter((task) => task.status === "done").length };
     }),
+  "POST /projects": (body) => {
+    const project = { ...(body as ProjectValues), id: crypto.randomUUID(), createdAt: new Date().toISOString() };
+    mockProjects.push(project);
+    return project;
+  },
   // Any email and password log in as the mock user.
   "POST /auth/login": (body) => ({ ...mockUser, email: (body as LoginValues).email }),
   "POST /auth/register": (body) => {

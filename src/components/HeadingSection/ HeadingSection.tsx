@@ -1,5 +1,6 @@
 'use client'
 import { Button } from "@radix-ui/themes";
+import NewProjectDialog from "@/components/NewProjectDialog/NewProjectDialog";
 import styles from "./ HeadingSection.module.scss";
 
 export default function HeadingSection() {
@@ -13,9 +14,9 @@ export default function HeadingSection() {
           <p> აირჩიე პროექტი ან შექმენი ახალი და გაწერე მისი ტასქები.</p>
         </div>
 
-        <Button className={styles.fillButton}>
-          ახალი პროექტი
-        </Button>
+        <NewProjectDialog
+          trigger={<Button className={styles.fillButton}>ახალი პროექტი</Button>}
+        />
       </section>
     </section>
   );
