@@ -3,6 +3,7 @@ import Logo from "../components/logo/logo";
 import ThemeToggle from "../components/ThemeToggle/ThemeToggle";
 import styles from "./page.module.scss";
 import Link from "next/link";
+import { isAuthEnabled } from "@/lib/features";
 
 type TaskStatus = "done" | "progress" | "todo";
 
@@ -31,12 +32,16 @@ export default function MainApp() {
         <Logo />
 
         <div className={styles.buttons}>
-          <Button asChild className={styles.outlineButton}>
-            <Link href="/login">შესვლა</Link>
-          </Button>
-          <Button asChild className={styles.fillButton}>
-            <Link href="/register">რეგისტრაცია</Link>
-          </Button>
+          {isAuthEnabled && (
+            <>
+              <Button asChild className={styles.outlineButton}>
+                <Link href="/login">შესვლა</Link>
+              </Button>
+              <Button asChild className={styles.fillButton}>
+                <Link href="/register">რეგისტრაცია</Link>
+              </Button>
+            </>
+          )}
           <ThemeToggle />
         </div>
       </section>
@@ -49,11 +54,13 @@ export default function MainApp() {
           </p>
           <div className={styles.contentButtons}>
             <Button asChild className={styles.contentFillButtons}>
-              <Link href="/register">დაწყება</Link>
+              <Link href={isAuthEnabled ? "/register" : "/dashboard"}>დაწყება</Link>
             </Button>
-            <Button asChild className={styles.contentOutlineButtons}>
-              <Link href="/login">უკვე მაქვს ანგარიში</Link>
-            </Button>
+            {isAuthEnabled && (
+              <Button asChild className={styles.contentOutlineButtons}>
+                <Link href="/login">უკვე მაქვს ანგარიში</Link>
+              </Button>
+            )}
           </div>
         </div>
 

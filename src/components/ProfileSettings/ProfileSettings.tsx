@@ -1,3 +1,4 @@
+import { isAuthEnabled } from "@/lib/features";
 import ThemeSwitch from "@/components/ThemeSwitch/ThemeSwitch";
 import styles from "./ProfileSettings.module.scss";
 
@@ -18,10 +19,12 @@ export default function ProfileSettings({ onChangeName, onChangePassword }: Prof
         <span>სახელის შეცვლა</span>
         <span aria-hidden>›</span>
       </button>
-      <button type="button" className={styles.row} onClick={onChangePassword}>
-        <span>პაროლის შეცვლა</span>
-        <span aria-hidden>›</span>
-      </button>
+      {isAuthEnabled && (
+        <button type="button" className={styles.row} onClick={onChangePassword}>
+          <span>პაროლის შეცვლა</span>
+          <span aria-hidden>›</span>
+        </button>
+      )}
     </section>
   );
 }

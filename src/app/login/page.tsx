@@ -1,7 +1,12 @@
+import { redirect } from "next/navigation";
+import { isAuthEnabled } from "@/lib/features";
 import Logo from "@/components/logo/logo";
 import styles from "./page.module.scss";
 import LoginForm from "@/components/loginForm/LoginForm";
 export default function LoginPage() {
+  // Without a backend there is nothing to log in to; go straight to the projects.
+  if (!isAuthEnabled) redirect("/dashboard");
+
   return (
     <section className={styles.container}>
       <section className={styles.leftSide}>

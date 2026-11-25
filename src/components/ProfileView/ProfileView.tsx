@@ -8,6 +8,7 @@ import ChangePasswordDialog from "@/components/ChangePasswordDialog/ChangePasswo
 import ProfileSettings from "@/components/ProfileSettings/ProfileSettings";
 import { useCurrentUser } from "@/hooks/useCurrentUser";
 import { useProfile } from "@/hooks/useProfile";
+import { isAuthEnabled } from "@/lib/features";
 import styles from "./ProfileView.module.scss";
 
 type OpenDialog = "name" | "password" | null;
@@ -37,7 +38,7 @@ export default function ProfileView() {
 
       <ProfileSettings onChangeName={() => setOpenDialog("name")} onChangePassword={() => setOpenDialog("password")} />
 
-      <button type="button" className={styles.logout} onClick={onLogout}>გასვლა</button>
+      {isAuthEnabled && <button type="button" className={styles.logout} onClick={onLogout}>გასვლა</button>}
 
       <ChangeNameDialog isOpen={openDialog === "name"} currentName={user?.name ?? ""} onClose={() => setOpenDialog(null)} />
       <ChangePasswordDialog isOpen={openDialog === "password"} onClose={() => setOpenDialog(null)} />
