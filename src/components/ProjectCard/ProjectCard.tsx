@@ -1,6 +1,8 @@
+import Link from "next/link";
 import styles from "./ProjectCard.module.scss";
 
 type ProjectCardProps = {
+  href: string;
   title: string;
   description: string;
   done: number;
@@ -8,6 +10,7 @@ type ProjectCardProps = {
 };
 
 export default function ProjectCard({
+  href,
   title,
   description,
   done,
@@ -16,7 +19,7 @@ export default function ProjectCard({
   const percent = total > 0 ? Math.round((done / total) * 100) : 0;
 
   return (
-    <article className={styles.card}>
+    <Link href={href} className={styles.card}>
       <div className={styles.content}>
         <h3 className={styles.title}>{title}</h3>
         <p className={styles.description}>{description}</p>
@@ -33,9 +36,9 @@ export default function ProjectCard({
           <div className={styles.fill} style={{ width: `${percent}%` }} />
         </div>
         <span className={styles.progressText}>
-          {done} / {total} შესრულებული
+          {total > 0 ? `${done} / ${total} შესრულებული` : "ტასქები ჯერ არ არის"}
         </span>
       </div>
-    </article>
+    </Link>
   );
 }

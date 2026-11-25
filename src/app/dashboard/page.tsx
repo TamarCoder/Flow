@@ -2,7 +2,8 @@
 
 import Logo from "@/components/logo/logo";
 import styles from "./page.module.scss";
-import { Avatar, Flex } from "@radix-ui/themes";
+import Link from "next/link";
+import { Avatar } from "@radix-ui/themes";
 import HeadingSection from "@/components/HeadingSection/ HeadingSection";
 import ThemeToggle from "@/components/ThemeToggle/ThemeToggle";
 import ProjectCard from "@/components/ProjectCard/ProjectCard";
@@ -20,14 +21,14 @@ export default function Dashboard() {
         <Logo />
 
         <div className={styles.avatarSection}>
-          <Flex gap="2" className={styles.headerAvatar}>
+          <Link href="/profile" className={styles.headerAvatar}>
             <Avatar
               src={user?.avatarUrl}
               fallback={user?.name.charAt(0) ?? ""}
               className={styles.avatar}
             />
             <p className={styles.avatarName}>{user?.name}</p>
-          </Flex>
+          </Link>
           <ThemeToggle />
         </div>
       </section>
@@ -38,6 +39,7 @@ export default function Dashboard() {
         {projects.map((project) => (
           <ProjectCard
             key={project.id}
+            href={`/projects/${project.id}`}
             title={project.name}
             description={project.description}
             done={project.doneCount}
