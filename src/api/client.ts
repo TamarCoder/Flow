@@ -5,7 +5,9 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export const isUsingMocks = !API_URL;
 
-async function request<T>(method: "GET" | "POST", path: string, body?: unknown): Promise<T> {
+type Method = "GET" | "POST" | "PATCH" | "DELETE";
+
+async function request<T>(method: Method, path: string, body?: unknown): Promise<T> {
   if (isUsingMocks) return (await findMockResponse(method, path, body)) as T;
 
   const response = await fetch(`${API_URL}${path}`, {
@@ -21,3 +23,5 @@ async function request<T>(method: "GET" | "POST", path: string, body?: unknown):
 export const fetchJson = <T>(path: string) => request<T>("GET", path);
 
 export const postJson = <T>(path: string, body: unknown) => request<T>("POST", path, body);
+
+export const patchJson = <T>(path: string, body: unknown) => request<T>("PATCH", path, body);

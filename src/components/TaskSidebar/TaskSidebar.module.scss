@@ -1,0 +1,75 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding: 28px 20px;
+  border-right: 1px solid var(--line);
+  background: var(--surface);
+  -webkit-backdrop-filter: blur(22px) saturate(1.4);
+  backdrop-filter: blur(22px) saturate(1.4);
+}
+
+.filters {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.filter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 44px;
+  padding: 0 12px;
+  border: none;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--primary-text);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease;
+
+  &:hover {
+    background: var(--bg);
+  }
+
+  &[aria-pressed="true"] {
+    background: var(--primary-text);
+    color: var(--bg);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+  }
+}
+
+.count {
+  color: var(--secondary-text);
+}
+
+.filter[aria-pressed="true"] .count {
+  color: inherit;
+}
+
+// Under 900px the filters sit in one row above the list.
+@media (max-width: 900px) {
+  .sidebar {
+    gap: 16px;
+    padding: 20px;
+    border-right: none;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .filters {
+    flex-direction: row;
+    overflow-x: auto;
+  }
+
+  .filter {
+    flex-shrink: 0;
+    gap: 8px;
+    border-radius: 999px;
+  }
+}
