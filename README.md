@@ -1,36 +1,90 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Flow
 
-## Getting Started
+**შენი დღე, ერთ სიაში** — your day, in one list.
 
-First, run the development server:
+Flow is a personal task app. You group tasks into projects and move each task
+through three states: to do, in progress, done. The interface is in Georgian
+and has a light and a dark theme.
+
+## Features
+
+- Projects with a progress bar
+- Tasks: add, edit, delete (with confirmation), change status in one click
+- Filters with counts: all, to do, in progress, done
+- A page for each task, with a description that saves while you type
+- Profile: name and theme
+
+## Run it
+
+Requires Node.js 20.9 or newer.
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000 and press **დაწყება** (Start).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+There is no backend yet. Your projects and tasks are stored in this browser
+(`localStorage`, key `flow-data`), so they stay after a refresh. The first visit
+shows a few sample projects. To start empty, clear site data in the browser.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Stack
 
-## Learn More
+Next.js 16 (App Router), React 19, TypeScript, Sass modules, Radix UI,
+React Hook Form with Zod, and SWR for data fetching.
 
-To learn more about Next.js, take a look at the following resources:
+## Project layout
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+src/
+├── app/            routes: /, /dashboard, /projects/[id], /projects/[id]/tasks/[taskId], /profile
+├── components/     one folder per component, with its .module.scss
+├── hooks/          SWR hooks: useProjects, useTasks, useTask, useProfile, ...
+├── api/client.ts   every request goes through here
+├── mocks/          sample data and the browser-storage backend (delete when a real API exists)
+├── lib/            validation schemas, status labels, theme, feature flags
+└── types/          shared data shapes
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Connecting a backend
 
-## Deploy on Vercel
+The app is ready for a REST API. Create `.env.local`:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+NEXT_PUBLIC_API_URL=https://your-api.example.com
+NEXT_PUBLIC_AUTH_ENABLED=true   # shows login, register, change password and log out
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+With `NEXT_PUBLIC_API_URL` set, `src/api/client.ts` sends every request to the
+API instead of the mocks. Requests include cookies (`credentials: "include"`).
+The API needs these routes; `src/mocks/handlers.ts` shows what each one returns.
+
+| Method | Path | Purpose |
+|---|---|---|
+| GET | `/me` | Current user |
+| PATCH | `/me` | Change name |
+| POST | `/me/password` | Change password |
+| POST | `/auth/register` | Register |
+| POST | `/auth/login` | Log in |
+| POST | `/auth/logout` | Log out |
+| GET | `/projects` | Projects with `taskCount` and `doneCount` |
+| POST | `/projects` | Create a project |
+| GET | `/projects/:id` | One project |
+| GET | `/projects/:id/tasks` | Tasks of a project |
+| POST | `/projects/:id/tasks` | Add a task |
+| GET | `/tasks/:id` | One task |
+| PATCH | `/tasks/:id` | Change title, status or description |
+| DELETE | `/tasks/:id` | Delete a task |
+
+When the backend works, delete `src/mocks/` and the mock branch in
+`src/api/client.ts`.
+
+## Scripts
+
+| Command | What it does |
+|---|---|
+| `npm run dev` | Development server |
+| `npm run build` | Production build |
+| `npm run start` | Serve the production build |
+| `npm run lint` | ESLint |
