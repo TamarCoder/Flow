@@ -1,43 +1,18 @@
+"use client";
+
 import Logo from "@/components/logo/logo";
 import styles from "./page.module.scss";
 import { Avatar, Flex } from "@radix-ui/themes";
 import HeadingSection from "@/components/HeadingSection/ HeadingSection";
 import ThemeToggle from "@/components/ThemeToggle/ThemeToggle";
 import ProjectCard from "@/components/ProjectCard/ProjectCard";
-
-type Project = {
-  id: number;
-  title: string;
-  description: string;
-  done: number;
-  total: number;
-};
-
-const projects: Project[] = [
-  {
-    id: 1,
-    title: "სამსახური",
-    description: "კვარტლის პრეზენტაცია და გუნდის გეგმები.",
-    done: 1,
-    total: 3,
-  },
-  {
-    id: 2,
-    title: "სახლი",
-    description: "ყოველდღიური საქმეები და გადასახადები.",
-    done: 0,
-    total: 2,
-  },
-  {
-    id: 3,
-    title: "პირადი განვითარება",
-    description: "კითხვა, კურსები და ჯანმრთელობა.",
-    done: 0,
-    total: 2,
-  },
-];
+import { useProjects } from "@/hooks/useProjects";
+import { useCurrentUser } from "@/hooks/useCurrentUser";
 
 export default function Dashboard() {
+  const { data: projects = [] } = useProjects();
+  const { data: user } = useCurrentUser();
+
   return (
     <section className={styles.container}>
       
@@ -47,11 +22,11 @@ export default function Dashboard() {
         <div className={styles.avatarSection}>
           <Flex gap="2" className={styles.headerAvatar}>
             <Avatar
-              src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?&w=256&h=256&q=70&crop=focalpoint&fp-x=0.5&fp-y=0.3&fp-z=1&fit=crop"
-              fallback="A"
+              src={user?.avatarUrl}
+              fallback={user?.name.charAt(0) ?? ""}
               className={styles.avatar}
             />
-            <p className={styles.avatarName}>თამარ</p>
+            <p className={styles.avatarName}>{user?.name}</p>
           </Flex>
           <ThemeToggle />
         </div>
@@ -63,10 +38,10 @@ export default function Dashboard() {
         {projects.map((project) => (
           <ProjectCard
             key={project.id}
-            title={project.title}
+            title={project.name}
             description={project.description}
-            done={project.done}
-            total={project.total}
+            done={project.doneCount}
+            total={project.taskCount}
           />
         ))}
       </section>
