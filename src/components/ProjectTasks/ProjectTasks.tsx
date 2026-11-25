@@ -4,11 +4,14 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import AddTaskForm from "@/components/AddTaskForm/AddTaskForm";
+import DeleteTaskDialog from "@/components/DeleteTaskDialog/DeleteTaskDialog";
+import EditTaskDialog from "@/components/EditTaskDialog/EditTaskDialog";
 import TaskRow from "@/components/TaskRow/TaskRow";
 import TaskSidebar from "@/components/TaskSidebar/TaskSidebar";
 import { useProject } from "@/hooks/useProject";
 import { useTasks } from "@/hooks/useTasks";
 import { findNextStatus, type TaskFilter } from "@/lib/taskStatus";
+import type { Task } from "@/types/models";
 import styles from "./ProjectTasks.module.scss";
 
 const todayFormat = new Intl.DateTimeFormat("ka-GE", { weekday: "long", day: "numeric", month: "long" });
@@ -16,8 +19,10 @@ const todayFormat = new Intl.DateTimeFormat("ka-GE", { weekday: "long", day: "nu
 export default function ProjectTasks() {
   const { id } = useParams<{ id: string }>();
   const { data: project, error: projectError } = useProject(id);
-  const { tasks, isLoading, createTask, updateTask } = useTasks(id);
+  const { tasks, isLoading, createTask, updateTask, deleteTask } = useTasks(id);
   const [filter, setFilter] = useState<TaskFilter>("all");
+  const [editingTask, setEditingTask] = useState<Task | null>(null);
+  const [deletingTask, setDeletingTask] = useState<Task | null>(null);
 
   const counts = useMemo(
     () => ({
@@ -59,11 +64,25 @@ export default function ProjectTasks() {
                 task={task}
                 // On failure SWR puts the old status back, so the error needs no extra message.
                 onStatusClick={() => updateTask(task.id, { status: findNextStatus(task.status) }).catch(() => {})}
+                onEdit={() => setEditingTask(task)}
+                onDelete={() => setDeletingTask(task)}
               />
             ))}
           </ul>
         )}
       </main>
+
+      <EditTaskDialog
+        task={editingTask}
+        onClose={() => setEditingTask(null)}
+        onSave={(changes) => updateTask(editingTask!.id, changes)}
+      />
+      <DeleteTaskDialog
+        task={deletingTask}
+        onClose={() => setDeletingTask(null)}
+        // On failure SWR puts the task back in the list.
+        onConfirm={() => deletingTask && deleteTask(deletingTask.id).catch(() => {})}
+      />
     </div>
   );
 }

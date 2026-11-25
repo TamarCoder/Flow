@@ -1,0 +1,22 @@
+.button {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--secondary-text);
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+
+  &:hover {
+    background: var(--bg);
+    color: var(--primary-text);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+  }
+}

@@ -25,3 +25,5 @@ export const fetchJson = <T>(path: string) => request<T>("GET", path);
 export const postJson = <T>(path: string, body: unknown) => request<T>("POST", path, body);
 
 export const patchJson = <T>(path: string, body: unknown) => request<T>("PATCH", path, body);
+
+export const deleteJson = (path: string) => request<unknown>("DELETE", path);

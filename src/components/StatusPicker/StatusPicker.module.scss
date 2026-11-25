@@ -1,0 +1,45 @@
+.picker {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.option {
+  height: 48px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: transparent;
+  color: var(--primary-text);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+
+  &:hover {
+    border-color: var(--accent);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+  }
+
+  &[aria-checked="true"] {
+    border-width: 2px;
+    font-weight: 600;
+  }
+
+  &[aria-checked="true"][data-status="todo"] {
+    border-color: var(--secondary-text);
+  }
+
+  &[aria-checked="true"][data-status="doing"] {
+    border-color: var(--orange);
+    color: var(--doing-text);
+  }
+
+  &[aria-checked="true"][data-status="done"] {
+    border-color: var(--burgundy);
+    color: var(--done-text);
+  }
+}

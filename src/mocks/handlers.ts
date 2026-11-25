@@ -28,6 +28,10 @@ const routes: Route[] = [
     return task;
   }],
   ["PATCH", /^\/tasks\/([^/]+)$/, ([id], body) => Object.assign(findOrFail(mockTasks.find((task) => task.id === id)), body)],
+  ["DELETE", /^\/tasks\/([^/]+)$/, ([id]) => {
+    mockTasks.splice(mockTasks.findIndex((task) => task.id === id), 1);
+    return {};
+  }],
   // Any email and password log in as the mock user.
   ["POST", /^\/auth\/login$/, (_, body) => ({ ...mockUser, email: (body as LoginValues).email })],
   ["POST", /^\/auth\/register$/, (_, body) => {

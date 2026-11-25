@@ -1,0 +1,7 @@
+// Narrower than other dialogs, with a tighter gap, as in the design.
+.dialog {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 440px;
+}

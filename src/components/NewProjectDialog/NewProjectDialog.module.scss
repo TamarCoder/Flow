@@ -1,79 +1,10 @@
-.dialog {
-  max-width: 520px;
-  padding: 36px;
-  border: 1px solid var(--line);
-  border-radius: 20px;
-  background: var(--surface);
-  box-shadow: inset 0 1px 0 var(--glass-line), 0 8px 28px rgba(43, 18, 22, 0.12);
-  -webkit-backdrop-filter: blur(22px) saturate(1.4);
-  backdrop-filter: blur(22px) saturate(1.4);
-}
-
-.form {
-  display: flex;
-  flex-direction: column;
-  gap: 22px;
-}
-
-.title {
-  margin: 0;
-  font-family: var(--font-serif), serif;
-  font-size: 26px;
-  font-weight: 600;
-  color: var(--primary-text);
-}
-
 .field {
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
 
-.label {
-  color: var(--primary-text);
-}
-
 .textarea {
   height: 120px;
   border-radius: 12px;
-}
-
-.error {
-  color: var(--danger);
-}
-
-.actions {
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-}
-
-.outlineButton,
-.fillButton {
-  height: 48px;
-  padding: 0 24px;
-  border-radius: 12px;
-  font-size: 15px;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.outlineButton {
-  border: 1px solid var(--line);
-  background: transparent;
-  color: var(--primary-text);
-
-  &:hover {
-    border-color: var(--accent);
-  }
-}
-
-.fillButton {
-  border: none;
-  background: var(--accent);
-  color: var(--on-accent);
-
-  &:hover {
-    filter: brightness(1.1);
-  }
 }
