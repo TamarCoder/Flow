@@ -39,6 +39,17 @@
   --task-dot-done: #7a1f2b; // შევსებული წრე
   --task-dot-progress: #e0602f; // ნახევრად შევსებული
   --task-dot-todo: #7a1f2b; // ცარიელი წრის ბორდერი
+
+  --side-panel: #8e4a50;
+  --side-text: #fdf3ea;
+
+  --danger: #c62828;
+
+  --glass-bg: rgba(255, 255, 255, 0.55);
+  --glass-border: rgba(255, 255, 255, 0.75);
+  --glass-shadow: 0 8px 32px rgba(122, 31, 43, 0.12);
+  --progress-track: rgba(122, 31, 43, 0.15);
+  --progress-fill: #7a1f2b;
 }
 
 [data-theme="dark"] {
@@ -71,10 +82,26 @@
   --row: rgba(255, 235, 225, 0.1); //რიგი პანელის შიგნით
   --icon: #f6eee3;
 
-  --task-panel: rgba(255, 255, 255, 0.06);  
+  --task-panel: rgba(255, 255, 255, 0.06);
   --task-item: rgba(255, 255, 255, 0.1);
   --task-item-text: #f6eee3;
   --task-dot-done: #d9475a;
   --task-dot-progress: #ff7a2f;
   --task-dot-todo: #b8a29a;
+
+  --side-panel:
+    radial-gradient(
+      circle at 30% 35%,
+      rgba(190, 50, 30, 0.55) 0%,
+      transparent 55%
+    ),
+    #3a0f16;
+  --side-text: #fdf3ea;
+  --danger: #ff6b6b;
+
+  --glass-bg: rgba(255, 255, 255, 0.06);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+  --progress-track: rgba(255, 255, 255, 0.12);
+  --progress-fill: #ff7a2f;
 }

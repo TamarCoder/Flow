@@ -1,0 +1,67 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.formTitle {
+  margin-bottom: 10px;
+  color: var(--primary-text);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.label {
+  color: var(--primary-text);
+}
+
+.input {
+  border-radius: 10px;
+}
+.input input::placeholder {
+  font-size: 13px;
+}
+
+.fillButton {
+  height: 44px;
+  margin-top: 6px;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--accent);
+  color: var(--bg);
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: var(--on-accent);
+  }
+}
+
+.switchText {
+  text-align: center;
+  font-size: 13px;
+  color: var(--secondary-text);
+}
+
+.switchLink {
+  color: var(--accent);
+  font-weight: 600;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.error {
+  color: var(--danger);
+}
+
+.input[aria-invalid="true"] {
+  border-color: var(--danger);
+}

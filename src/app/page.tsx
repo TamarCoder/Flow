@@ -1,7 +1,8 @@
 import { Button } from "@radix-ui/themes";
-import Logo from "./components/logo/logo";
-import ThemeToggle from "./components/ui/ThemeToggle/ThemeToggle";
+import Logo from "../components/logo/logo";
+import ThemeToggle from "../components/ThemeToggle/ThemeToggle";
 import styles from "./page.module.scss";
+import Link from "next/link";
 
 type TaskStatus = "done" | "progress" | "todo";
 
@@ -30,8 +31,12 @@ export default function MainApp() {
         <Logo />
 
         <div className={styles.buttons}>
-          <Button className={styles.outlineButton}>შესვლა</Button>
-          <Button className={styles.fillButton}>რეგისტრაცია</Button>
+          <Button asChild className={styles.outlineButton}>
+            <Link href="/login">შესვლა</Link>
+          </Button>
+          <Button asChild className={styles.fillButton}>
+            <Link href="/register">რეგისტრაცია</Link>
+          </Button>
           <ThemeToggle />
         </div>
       </section>
