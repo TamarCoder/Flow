@@ -11,23 +11,6 @@
   color: var(--primary-text);
 }
 
-.field {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.label {
-  color: var(--primary-text);
-}
-
-.input {
-  border-radius: 10px;
-}
-.input input::placeholder {
-  font-size: 13px;
-}
-
 .fillButton {
   height: 44px;
   margin-top: 6px;
@@ -62,6 +45,12 @@
   color: var(--danger);
 }
 
-.input[aria-invalid="true"] {
-  border-color: var(--danger);
+.forgotLink {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--accent);
+
+  &:hover {
+    text-decoration: underline;
+  }
 }

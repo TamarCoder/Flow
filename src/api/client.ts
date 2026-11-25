@@ -5,10 +5,19 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export const isUsingMocks = !API_URL;
 
-export async function fetchJson<T>(path: string): Promise<T> {
-  if (isUsingMocks) return (await findMockResponse(path)) as T;
+async function request<T>(method: "GET" | "POST", path: string, body?: unknown): Promise<T> {
+  if (isUsingMocks) return (await findMockResponse(method, path, body)) as T;
 
-  const response = await fetch(`${API_URL}${path}`, { credentials: "include" });
-  if (!response.ok) throw new Error(`GET ${path} failed: ${response.status}`);
+  const response = await fetch(`${API_URL}${path}`, {
+    method,
+    credentials: "include",
+    headers: body ? { "Content-Type": "application/json" } : undefined,
+    body: body ? JSON.stringify(body) : undefined,
+  });
+  if (!response.ok) throw new Error(`${method} ${path} failed: ${response.status}`);
   return response.json() as Promise<T>;
 }
+
+export const fetchJson = <T>(path: string) => request<T>("GET", path);
+
+export const postJson = <T>(path: string, body: unknown) => request<T>("POST", path, body);
