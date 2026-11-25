@@ -1,0 +1,95 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  max-width: 720px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 56px;
+  color: var(--primary-text);
+}
+
+.backLink {
+  width: fit-content;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--accent);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.notFound {
+  color: var(--secondary-text);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  padding: 36px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--surface);
+  box-shadow: inset 0 1px 0 var(--glass-line), 0 8px 28px rgba(43, 18, 22, 0.12);
+  -webkit-backdrop-filter: blur(22px) saturate(1.4);
+  backdrop-filter: blur(22px) saturate(1.4);
+}
+
+.statusLabel {
+  margin-bottom: -18px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--secondary-text);
+}
+
+.card[data-status="doing"] .statusLabel {
+  color: var(--doing-text);
+}
+
+.card[data-status="done"] .statusLabel {
+  color: var(--done-text);
+}
+
+.title {
+  font-family: var(--font-serif), serif;
+  font-size: 34px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.textarea {
+  height: 140px;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--primary-text);
+  font: inherit;
+  font-size: 15px;
+  resize: vertical;
+
+  &:focus {
+    border-color: var(--accent);
+    outline: none;
+  }
+}
+
+.error {
+  font-size: 13px;
+  color: var(--danger);
+}

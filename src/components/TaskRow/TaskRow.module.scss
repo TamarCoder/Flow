@@ -69,6 +69,8 @@
 }
 
 .title {
+  width: fit-content;
+  text-decoration: none;
   font-size: 16px;
   line-height: 1.4;
   color: var(--primary-text);
@@ -77,6 +79,10 @@
 .row[data-status="done"] .title {
   color: var(--secondary-text);
   text-decoration: line-through;
+}
+
+.title:hover {
+  text-decoration: underline;
 }
 
 .statusLabel {

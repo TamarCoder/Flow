@@ -27,6 +27,7 @@ const routes: Route[] = [
     mockTasks.unshift(task);
     return task;
   }],
+  ["GET", /^\/tasks\/([^/]+)$/, ([id]) => findOrFail(mockTasks.find((task) => task.id === id))],
   ["PATCH", /^\/tasks\/([^/]+)$/, ([id], body) => Object.assign(findOrFail(mockTasks.find((task) => task.id === id)), body)],
   ["DELETE", /^\/tasks\/([^/]+)$/, ([id]) => {
     mockTasks.splice(mockTasks.findIndex((task) => task.id === id), 1);

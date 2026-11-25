@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Pencil, Trash2 } from "lucide-react";
 import IconButton from "@/components/IconButton/IconButton";
 import { statusLabels } from "@/lib/taskStatus";
@@ -30,7 +31,9 @@ export default function TaskRow({ task, onStatusClick, onEdit, onDelete }: TaskR
       </button>
 
       <div className={styles.text}>
-        <p className={styles.title} onDoubleClick={onEdit}>{task.title}</p>
+        <Link href={`/projects/${task.projectId}/tasks/${task.id}`} className={styles.title}>
+          {task.title}
+        </Link>
         <span className={styles.statusLabel}>{statusLabels[task.status]}</span>
       </div>
 
