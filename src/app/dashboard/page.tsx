@@ -4,7 +4,7 @@ import Logo from "@/components/logo/logo";
 import styles from "./page.module.scss";
 import Link from "next/link";
 import { Avatar } from "@radix-ui/themes";
-import HeadingSection from "@/components/HeadingSection/ HeadingSection";
+import HeadingSection from "@/components/HeadingSection/HeadingSection";
 import ThemeToggle from "@/components/ThemeToggle/ThemeToggle";
 import ProjectCard from "@/components/ProjectCard/ProjectCard";
 import { useProjects } from "@/hooks/useProjects";
