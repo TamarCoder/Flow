@@ -16,7 +16,7 @@ export default function Logo() {
       />
       <Image
         className={styles.dark}
-        src="/logos/logo-DarkMode.png"
+        src="/logos/logo-darkMode.png"
         alt="Logo"
         width={120}
         height={40}
