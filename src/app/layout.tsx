@@ -21,6 +21,7 @@ export const metadata: Metadata = {
   description: "შენი დღე, ერთ სიაში",
 };
 
+// Runs before the page paints, so a saved dark theme does not flash light first.
 const themeScript = `
 (function () {
   try {
@@ -41,6 +42,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       suppressHydrationWarning
       className={`${notoSans.variable} ${notoSerif.variable}`}
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body>
         <Theme appearance="inherit">{children}</Theme>
       </body>
