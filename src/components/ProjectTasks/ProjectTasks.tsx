@@ -12,9 +12,8 @@ import { useProject } from "@/hooks/useProject";
 import { useTasks } from "@/hooks/useTasks";
 import { findNextStatus, type TaskFilter } from "@/lib/taskStatus";
 import type { Task } from "@/types/models";
+import { formatGeorgianDate } from "@/lib/formatGeorgianDate";
 import styles from "./ProjectTasks.module.scss";
-
-const todayFormat = new Intl.DateTimeFormat("ka-GE", { weekday: "long", day: "numeric", month: "long" });
 
 export default function ProjectTasks() {
   const { id } = useParams<{ id: string }>();
@@ -46,7 +45,7 @@ export default function ProjectTasks() {
           <p className={styles.description}>პროექტი ვერ მოიძებნა.</p>
         ) : (
           <header className={styles.header}>
-            <span className={styles.date}>{todayFormat.format(new Date())}</span>
+            <span className={styles.date}>{formatGeorgianDate(new Date())}</span>
             <h2 className={styles.title}>{project?.name}</h2>
             {project?.description && <p className={styles.description}>{project.description}</p>}
           </header>
